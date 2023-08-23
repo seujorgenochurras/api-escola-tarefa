@@ -1,0 +1,21 @@
+package io.github.seujorgenochurras.domain.service;
+
+import io.github.seujorgenochurras.domain.model.Client;
+import io.github.seujorgenochurras.domain.repository.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.beans.Transient;
+
+@Service
+public class ClientService {
+    @Autowired
+    private ClientRepository clientRepository;
+
+    @Transient
+    public Client save(Client client){
+       return clientRepository.save(client);
+
+    }
+
+}
