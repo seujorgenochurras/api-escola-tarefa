@@ -1,5 +1,5 @@
-CREATE DATABASE API_TAREFA;
-USE API_TAREFA;
+CREATE DATABASE bruno_feio;
+USE bruno_feio;
 
 create table client(
 id varchar(36) primary key not null,
