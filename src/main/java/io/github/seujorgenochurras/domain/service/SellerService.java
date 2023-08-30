@@ -12,7 +12,8 @@ public class SellerService {
     @Autowired
     private SellerRepository sellerRepository;
 
-    public Seller save(Seller seller){
+    public Seller save(SellerRegisterDto seller){
+
         return null;
     }
 }

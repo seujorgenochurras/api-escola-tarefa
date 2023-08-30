@@ -9,4 +9,22 @@ public class SellerRegisterDto {
 
     @NotNull
     private Address address;
+
+    public String getName() {
+        return name;
+    }
+
+    public SellerRegisterDto setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public SellerRegisterDto setAddress(Address address) {
+        this.address = address;
+        return this;
+    }
 }
