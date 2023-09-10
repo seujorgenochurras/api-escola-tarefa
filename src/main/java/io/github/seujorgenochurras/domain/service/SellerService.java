@@ -6,14 +6,21 @@ import io.github.seujorgenochurras.domain.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SellerService {
 
     @Autowired
     private SellerRepository sellerRepository;
 
-    public Seller save(SellerRegisterDto seller){
-
+    public Seller save(Seller seller){
+        sellerRepository.save(seller);
         return null;
     }
+    public List<Seller> getAllSellers(){
+        return sellerRepository.findAll();
+    }
+
+
 }
