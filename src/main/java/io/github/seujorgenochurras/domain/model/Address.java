@@ -1,5 +1,6 @@
 package io.github.seujorgenochurras.domain.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
@@ -7,16 +8,21 @@ import org.hibernate.validator.constraints.Length;
 //todo add constructor that fills with only zipCode
 @Embeddable
 public class Address {
+
+    public Address() {
+    }
+
     @NotNull
     @Length(max = 20) //todo verify maximum length
-    private final String zipCode;
+    private String zipCode;
 
     @NotNull
-    private final String streetName;
+    private String streetName;
 
     @NotNull
-    private final String addressNumber;
+    private String addressNumber;
 
+    @Column(name = "additional_info")
     private String additionalInfo;
 
     public Address(String zipCode, String streetName, String addressNumber, String additionalInfo) {
@@ -50,6 +56,21 @@ public class Address {
 
     public Address setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+        return this;
+    }
+
+    public Address setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+        return this;
+    }
+
+    public Address setStreetName(String streetName) {
+        this.streetName = streetName;
+        return this;
+    }
+
+    public Address setAddressNumber(String addressNumber) {
+        this.addressNumber = addressNumber;
         return this;
     }
 }

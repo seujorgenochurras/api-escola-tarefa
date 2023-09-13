@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ClientService {
@@ -16,6 +16,7 @@ public class ClientService {
 
     @Transient
     public Client save(Client client){
+        client.setId(UUID.randomUUID().toString());
        return clientRepository.save(client);
 
     }

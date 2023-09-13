@@ -2,6 +2,7 @@ package io.github.seujorgenochurras.domain.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Product {
@@ -13,10 +14,16 @@ public class Product {
     @Column(name = "name", length = 200)
     private String name;
 
-    @OneToMany
-    @Column(name = "seller_fk", length = 36)
+    @OneToOne
     @NotNull
+    @PrimaryKeyJoinColumn(name = "seller_fk")
+    @Length(max = 26)
     private Seller seller;
+
+    @Column(name = "on_sale")
+    @NotNull
+    private boolean onSale = false;
+
 
     @NotNull
     @Column(name = "price", precision = 2)
@@ -28,7 +35,12 @@ public class Product {
 
     @NotNull
     @Column(name = "quantity", precision = 3)
-    private double quantity;
+    private double minimalQuantity;
+
+    @NotNull
+    @Column(name = "stock")
+    private int stock;
+
     @NotNull
     @Column(name = "quantified_as", length = 3)
     private String quantifiedAs;
@@ -79,12 +91,12 @@ public class Product {
         return this;
     }
 
-    public double getQuantity() {
-        return quantity;
+    public double getMinimalQuantity() {
+        return minimalQuantity;
     }
 
-    public Product setQuantity(double quantity) {
-        this.quantity = quantity;
+    public Product setMinimalQuantity(double minimalQuantity) {
+        this.minimalQuantity = minimalQuantity;
         return this;
     }
 
@@ -94,6 +106,24 @@ public class Product {
 
     public Product setQuantifiedAs(String quantifiedAs) {
         this.quantifiedAs = quantifiedAs;
+        return this;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public Product setStock(int stock) {
+        this.stock = stock;
+        return this;
+    }
+
+    public boolean isOnSale() {
+        return onSale;
+    }
+
+    public Product setOnSale(boolean onSale) {
+        this.onSale = onSale;
         return this;
     }
 }

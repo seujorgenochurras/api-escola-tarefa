@@ -2,6 +2,7 @@ package io.github.seujorgenochurras.domain.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 public class ProductOrder {
@@ -11,19 +12,26 @@ public class ProductOrder {
     private String id;
 
     @NotNull
-    @OneToMany
-    @Column(name = "client_fk")
+    @OneToOne
+    @PrimaryKeyJoinColumn(name = "client_fk")
     private Client client;
     @NotNull
-    @Column(name = "seller_fk")
-    @OneToMany
+    @PrimaryKeyJoinColumn(name = "seller_fk")
+    @OneToOne
     private Seller seller;
 
     @NotNull
+    @Column(name = "total_price")
     private double totalPrice;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    @Column(name = "order_status")
+    private OrderStatus orderStatus;
 
 
     @NotNull
+    @Column(name = "amount")
     private int amount;
 
     public String getId() {
@@ -68,6 +76,15 @@ public class ProductOrder {
 
     public ProductOrder setAmount(int amount) {
         this.amount = amount;
+        return this;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public ProductOrder setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
         return this;
     }
 }
