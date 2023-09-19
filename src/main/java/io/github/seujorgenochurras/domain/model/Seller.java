@@ -43,4 +43,13 @@ public class Seller {
         this.address = address;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

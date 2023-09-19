@@ -4,6 +4,7 @@ import com.sun.java.accessibility.util.GUIInitializedListener;
 import io.github.seujorgenochurras.api.dto.SellerRegisterDto;
 import io.github.seujorgenochurras.domain.model.Seller;
 import io.github.seujorgenochurras.domain.repository.SellerRepository;
+import io.github.seujorgenochurras.domain.service.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,8 @@ public class SellerService {
         return sellerRepository.findAll();
     }
 
+    public Seller getSellerById(String sellerUUID){
+        return sellerRepository.findById(sellerUUID).orElseThrow(() -> new NotFoundException("Seller not found"));
+    }
 
 }

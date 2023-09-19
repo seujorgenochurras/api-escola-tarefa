@@ -2,7 +2,6 @@ package io.github.seujorgenochurras.domain.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Product {
@@ -14,10 +13,14 @@ public class Product {
     @Column(name = "name", length = 200)
     private String name;
 
-    @OneToOne
     @NotNull
-    @PrimaryKeyJoinColumn(name = "seller_fk")
-    @Length(max = 26)
+    @Column(name = "description")
+    private String description;
+
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "seller_fk")
     private Seller seller;
 
     @Column(name = "on_sale")
@@ -125,5 +128,30 @@ public class Product {
     public Product setOnSale(boolean onSale) {
         this.onSale = onSale;
         return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Product setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", seller=" + seller +
+                ", onSale=" + onSale +
+                ", price=" + price +
+                ", country='" + country + '\'' +
+                ", minimalQuantity=" + minimalQuantity +
+                ", stock=" + stock +
+                ", quantifiedAs='" + quantifiedAs + '\'' +
+                '}';
     }
 }

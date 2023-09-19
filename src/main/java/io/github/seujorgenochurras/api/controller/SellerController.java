@@ -7,6 +7,7 @@ import io.github.seujorgenochurras.domain.model.Product;
 import io.github.seujorgenochurras.domain.model.Seller;
 import io.github.seujorgenochurras.domain.service.ProductService;
 import io.github.seujorgenochurras.domain.service.SellerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class SellerController {
     private ProductService productService;
 
     @RequestMapping("register/seller")
-    public ResponseEntity<Seller> registerSeller(SellerRegisterDto sellerDto){
+    public ResponseEntity<Seller> registerSeller(@RequestBody @Valid SellerRegisterDto sellerDto){
         Seller seller = sellerDtoAssembler.assembleRegistrationDto(sellerDto);
         seller = sellerService.save(seller);
 

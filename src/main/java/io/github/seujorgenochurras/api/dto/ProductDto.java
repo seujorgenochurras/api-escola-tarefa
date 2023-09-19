@@ -1,8 +1,6 @@
 package io.github.seujorgenochurras.api.dto;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -32,6 +30,19 @@ public class ProductDto {
     @NotNull
     @Size(max = 3)
     private String quantifiedAs;
+
+    @NotNull
+    private String description;
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ProductDto setDescription(String description) {
+        this.description = description;
+        return this;
+    }
 
     public int getStock() {
         return stock;

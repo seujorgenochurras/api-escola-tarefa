@@ -21,6 +21,7 @@ public class ProductService {
 
     public Product save(Product product){
         product.setId(UUID.randomUUID().toString());
+        System.out.println(product);
         return productRepository.save(product);
     }
 

@@ -1,3 +1,4 @@
+DROP DATABASE  IF EXISTS bruno_feio;
 CREATE DATABASE IF NOT EXISTS bruno_feio;
 USE bruno_feio;
 
@@ -5,19 +6,20 @@ create table client(
 id varchar(36) primary key not null,
 name varchar(200) not null,
 age int not null,
-zipCode varchar(20) not null,
-streetName varchar(200) not null,
-addressNumber varchar(20) not null,
-additionalInfo varchar(200) not null,
+zip_code varchar(20) not null,
+street_name varchar(200) not null,
+address_number varchar(20) not null,
+additional_info varchar(200) not null,
 gender varchar(20) not null
 );
 
 create table seller(
 id varchar(36) primary key not null,
 name varchar(200) not null,
-zipCode varchar(20) not null,
-streetName varchar(200) not null,
-addressNumber varchar(20) not null
+zip_code varchar(20) not null,
+street_name varchar(200) not null,
+address_number varchar(20) not null,
+additional_info varchar(200) not null
 );
 
 create table product(
@@ -47,3 +49,6 @@ amount integer not null,
 foreign key (seller_fk) references seller(id),
 foreign key (client_fk) references client(id)
 );
+
+
+select * from client;
