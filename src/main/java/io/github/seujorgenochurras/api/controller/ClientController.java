@@ -2,6 +2,7 @@ package io.github.seujorgenochurras.api.controller;
 
 import io.github.seujorgenochurras.api.assemble.ClientDtoAssembler;
 import io.github.seujorgenochurras.api.dto.ClientRegisterDto;
+import io.github.seujorgenochurras.api.dto.ProductOrderDto;
 import io.github.seujorgenochurras.domain.model.Client;
 import io.github.seujorgenochurras.domain.model.Product;
 import io.github.seujorgenochurras.domain.model.ProductOrder;
@@ -22,6 +23,8 @@ public class ClientController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductOrderAssembler productOrderAssembler;
 
     @Autowired
     private ClientService clientService;
@@ -43,10 +46,10 @@ public class ClientController {
 
     @RequestMapping(path = "client/buy")
     @PostMapping
-    public ResponseEntity<ProductOrder> orderProduct(@RequestBody String productId){
-        Product product = productService.findById(productId);
+    public ResponseEntity<ProductOrder> orderProduct(@RequestBody ProductOrderDto productOrderDto){
+        ProductOrder productOrder = productOrderAssembler.assemble(productOrderDto);
 
-        ProductOrder productOrder = clientService.orderProduct(product);
+
         return new ResponseEntity<>(productOrder, HttpStatus.CREATED);
     }
 

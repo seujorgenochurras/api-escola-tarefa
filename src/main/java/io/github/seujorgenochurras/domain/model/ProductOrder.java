@@ -1,5 +1,6 @@
 package io.github.seujorgenochurras.domain.model;
 
+import io.github.seujorgenochurras.domain.service.ProductService;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -21,6 +22,11 @@ public class ProductOrder {
     private Seller seller;
 
     @NotNull
+    @PrimaryKeyJoinColumn(name = "product_fk")
+    @OneToOne
+    private Product product;
+
+    @NotNull
     @Column(name = "total_price")
     private double totalPrice;
 
@@ -33,6 +39,16 @@ public class ProductOrder {
     @NotNull
     @Column(name = "amount")
     private int amount;
+
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public ProductOrder setProduct(Product product) {
+        this.product = product;
+        return this;
+    }
 
     public String getId() {
         return id;

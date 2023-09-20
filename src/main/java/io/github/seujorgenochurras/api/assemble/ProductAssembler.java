@@ -17,11 +17,11 @@ public class ProductAssembler {
     private SellerService sellerService;
 
 
-    public Product toEntity(ProductDto productDto){
+    public Product toEntity(ProductDto productDto) {
         ModelMapper modelMapper = new ModelMapper();
 
         Converter<String, Seller> sellerConverter = sellerUUID -> sellerService.getSellerById(sellerUUID.getSource());
-       TypeMap<ProductDto, Product> typeMap = modelMapper.typeMap(ProductDto.class, Product.class)
+        modelMapper.typeMap(ProductDto.class, Product.class)
                 .addMappings(mapper -> mapper.using(sellerConverter).map(ProductDto::getSeller, Product::setSeller));
 
         return modelMapper.map(productDto, Product.class);
