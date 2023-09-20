@@ -17,6 +17,7 @@ public class Client {
     @NotNull
     private int age;
     @NotNull
+    @Enumerated(EnumType.ORDINAL)
     private Gender gender;
 
 

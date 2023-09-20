@@ -1,4 +1,4 @@
-DROP DATABASE  IF EXISTS bruno_feio;
+DROP DATABASE IF EXISTS bruno_feio;
 CREATE DATABASE IF NOT EXISTS bruno_feio;
 USE bruno_feio;
 
@@ -10,7 +10,7 @@ zip_code varchar(20) not null,
 street_name varchar(200) not null,
 address_number varchar(20) not null,
 additional_info varchar(200) not null,
-gender varchar(20) not null
+gender integer not null
 );
 
 create table seller(
@@ -51,4 +51,8 @@ foreign key (client_fk) references client(id)
 );
 
 
+select * from seller;
 select * from client;
+select * from product;
+select * from product_order;
+
