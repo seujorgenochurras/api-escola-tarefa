@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="61.0" layoutY="17.0" prefHeight="579.0" prefWidth="643.0">
+         <children>
+            <Pane layoutX="66.0" layoutY="84.0" prefHeight="481.0" prefWidth="528.0">
+               <children>
+                  <JFXTextField layoutX="62.0" layoutY="53.0" prefHeight="26.0" prefWidth="152.0" promptText="Nome do produto" />
+                  <JFXTextField layoutX="62.0" layoutY="90.0" prefHeight="26.0" prefWidth="152.0" promptText="Preço" />
+                  <JFXTextField layoutX="62.0" layoutY="128.0" prefHeight="26.0" prefWidth="152.0" promptText="Descrição" />
+                  <Button layoutX="121.0" layoutY="304.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="286.0" style="-fx-background-color: #387ff8;" text="Adicionar Produto" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <JFXTextField layoutX="252.0" layoutY="57.0" promptText="Categoria" />
+                  <Label accessibleRole="BUTTON" layoutX="396.0" layoutY="59.0" text="?" textFill="#4151d0">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <JFXButton layoutX="253.0" layoutY="116.0" prefHeight="24.0" prefWidth="152.0" text="Adicione imagem">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Shadow radius="4.75" width="0.0" />
+                     </effect>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Label layoutX="157.0" layoutY="20.0" text="Registre seu produto">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Label accessibleRole="BUTTON" layoutX="608.0" layoutY="14.0" prefHeight="26.0" prefWidth="14.0" text="X">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Bloom threshold="0.23" />
+               </effect>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
