@@ -9,16 +9,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.LoginPageController">
    <children>
       <Pane layoutX="159.0" layoutY="19.0" prefHeight="575.0" prefWidth="448.0">
          <children>
-            <JFXPasswordField layoutX="149.0" layoutY="198.0" prefHeight="26.0" prefWidth="152.0" promptText="Senha" />
-            <JFXTextField layoutX="147.0" layoutY="148.0" prefHeight="26.0" prefWidth="152.0" promptText="Usuário" />
-            <Button layoutX="129.0" layoutY="308.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: #387ff8;" text="Logar" textFill="WHITE">
+            <JFXPasswordField fx:id="passwordField" layoutX="149.0" layoutY="198.0" prefHeight="26.0" prefWidth="152.0" promptText="Senha" />
+            <JFXTextField fx:id="userField" layoutX="147.0" layoutY="148.0" prefHeight="26.0" prefWidth="152.0" promptText="Usuário" />
+            <Button fx:id="loginButton" layoutX="129.0" layoutY="308.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: #387ff8;" text="Logar" textFill="WHITE">
                <font>
                   <Font size="21.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label layoutX="128.0" layoutY="59.0" text="Bem Vindo!">
                <font>
@@ -30,7 +33,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label disable="true" layoutX="147.0" layoutY="236.0" text="Esqueceu sua senha?" textFill="#99a8a1">
+            <Label fx:id="forgotPassButton" layoutX="147.0" layoutY="236.0" onMouseClicked="#onForgotPasswordClick" text="Esqueceu sua senha?" textFill="#99a8a1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -43,7 +46,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="230.0" layoutY="372.0" text="Registre-se" textFill="#7965b5">
+            <Label fx:id="registerButton" layoutX="230.0" layoutY="372.0" onMouseClicked="#onRegisterButtonClick" text="Registre-se" textFill="#7965b5">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

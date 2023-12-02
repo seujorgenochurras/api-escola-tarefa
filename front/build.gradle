@@ -29,9 +29,9 @@ application {
 
 javafx {
   version = '20'
-  modules = ['javafx.controls', 'javafx.fxml']
-}
+  modules = ['javafx.controls', 'javafx.fxml', "javafx.base", "javafx.graphics"]
 
+}
 dependencies {
   implementation ("com.jfoenix:jfoenix:9.0.0")
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
