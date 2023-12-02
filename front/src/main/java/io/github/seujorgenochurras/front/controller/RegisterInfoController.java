@@ -5,13 +5,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
-import javafx.css.StyleClass;
+import io.github.seujorgenochurras.front.domain.User;
+import io.github.seujorgenochurras.front.dto.UserDto;
+import io.github.seujorgenochurras.front.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 
 public class RegisterInfoController {
+
+    private static final UserService userService = new UserService();
     @FXML
     private Label closeButton;
 
@@ -29,13 +33,13 @@ public class RegisterInfoController {
         JFXDialogLayout layout = new JFXDialogLayout();
 
         layout.setHeading(new Label("Atenção"));
-        layout.setBody(new Label("Você tem certeza que não quer preencher isso agora?"));
-        JFXButton acceptButton = new JFXButton("Sim");
-        JFXButton denialButton = new JFXButton("Não");
-
+        layout.setBody(new Label("Você tem certeza que não quer preencher agora?"));
+        JFXButton acceptButton = new JFXButton("Preencher agora");
+        JFXButton denialButton = new JFXButton("Preencher depois");
 
         denialButton.setOnAction(event -> alert.hideWithAnimation());
-        layout.setActions(acceptButton);
+        acceptButton.setOnAction(event -> onRegisterButtonClick());
+        layout.setActions(denialButton, acceptButton);
         alert.setContent(layout);
         alert.show();
     }
@@ -47,11 +51,13 @@ public class RegisterInfoController {
 
     @FXML
     private void onRegisterButtonClick(){
-        Main.getStageManager().switchScene(Scenes.REGISTER_INFO);
+        validateFields();
+        userService.registerUser(parseFormData());
     }
-
-    @FXML
-    private void finishRegistration(){
-
+    private UserDto parseFormData(){
+        return new UserDto();
+    }
+    private void validateFields(){
+        //todo
     }
 }

@@ -17,7 +17,6 @@ public class Main extends Application {
         stageManager = new StageManager(stage);
         Scene scene = new Scene(fxmlLoader.load());
         stageManager.switchScene(scene);
-        PopupUtil.showAlert("vai volbtroajkpsd");
     }
     public static void main(String[] args) {
         launch();

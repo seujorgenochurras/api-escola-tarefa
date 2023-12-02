@@ -19,7 +19,7 @@
                   <JFXTextField layoutX="83.0" layoutY="86.0" prefHeight="26.0" prefWidth="152.0" promptText="Número" />
                   <JFXTextField layoutX="83.0" layoutY="125.0" prefHeight="26.0" prefWidth="152.0" promptText="E-mail" />
                   <JFXTextField layoutX="83.0" layoutY="167.0" prefHeight="26.0" prefWidth="152.0" promptText="CPF" />
-                  <Label fx:id="registerLaterButton" layoutX="74.0" layoutY="219.0" text="Prefiro preencher depois" textFill="#2619dd">
+                  <Label fx:id="registerLaterButton" layoutX="74.0" layoutY="219.0" onMouseClicked="#onRegisterLater" text="Prefiro preencher depois" textFill="#2619dd">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -39,10 +39,13 @@
                   <Font size="33.0" />
                </font>
             </Label>
-            <Button fx:id="registerButton" layoutX="156.0" layoutY="396.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="47.0" prefWidth="332.0" style="-fx-background-color: #387ff8;" text="Registrar Informações" textFill="WHITE">
+            <Button fx:id="registerButton" layoutX="171.0" layoutY="392.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="69.0" prefWidth="301.0" style="-fx-background-color: #387ff8;" text="Finalizar Registro" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="23.0" />
+                  <Font name="System Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="closeButton" layoutX="608.0" layoutY="14.0" onMouseClicked="#onCloseButtonClick" prefHeight="26.0" prefWidth="14.0" text="X">
                <font>
