@@ -8,13 +8,13 @@ public class UserDto {
 
     private PersonalInformation personalInformation;
 
-    @SerializedName("userName")
+    @SerializedName("username")
     private String userName;
 
-    @SerializedName("id")
+    @SerializedName("token")
     private String token;
 
-    @SerializedName("isSeller")
+    @SerializedName("seller")
     private boolean isSeller;
 
     public Address getAddress() {
@@ -27,8 +27,7 @@ public class UserDto {
     }
 
     public boolean isSeller() {
-        //TODO
-        return true;
+        return isSeller;
     }
 
     public UserDto setSeller(boolean seller) {

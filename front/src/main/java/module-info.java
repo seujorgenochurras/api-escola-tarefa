@@ -7,8 +7,8 @@ module io.github.seujorgenochurras.front {
     requires com.google.gson;
 
     opens io.github.seujorgenochurras.front.controller to javafx.fxml;
-
-    opens io.github.seujorgenochurras.front to javafx.fxml;
+    opens io.github.seujorgenochurras.front to javafx.fxml, com.google.gson;
+    opens io.github.seujorgenochurras.front.dto to javafx.fxml, com.google.gson;
     exports io.github.seujorgenochurras.front;
 
 }

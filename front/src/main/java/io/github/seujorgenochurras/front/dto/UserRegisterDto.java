@@ -1,14 +1,26 @@
 package io.github.seujorgenochurras.front.dto;
 
-public class UserLoginDto {
+public class UserRegisterDto {
+
     private String username;
     private String password;
+
+    private boolean isSeller;
+
+    public boolean isSeller() {
+        return isSeller;
+    }
+
+    public UserRegisterDto setIsSeller(boolean seller) {
+        isSeller = seller;
+        return this;
+    }
 
     public String getUsername() {
         return username;
     }
 
-    public UserLoginDto setUsername(String username) {
+    public UserRegisterDto setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -17,9 +29,8 @@ public class UserLoginDto {
         return password;
     }
 
-    public UserLoginDto setPassword(String password) {
+    public UserRegisterDto setPassword(String password) {
         this.password = password;
         return this;
     }
-
 }

@@ -25,6 +25,7 @@ public class RequestUtils {
         return sendRequest(request);
     }
     public static HttpResponse<String> makePostRequestTo(String uri, HttpRequest.BodyPublisher bodyPublisher){
+        uri = "http://127.0.0.1:8080/" + uri;
         HttpRequest request = HttpRequest
                 .newBuilder()
                 .setHeader("Content-Type", "application/json")

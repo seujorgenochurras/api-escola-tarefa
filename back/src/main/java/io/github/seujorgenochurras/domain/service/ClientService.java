@@ -20,22 +20,19 @@ public class ClientService {
     @Autowired
     private ProductService productService;
 
-    @Transient
-    public Client save(Client client){
-       return clientRepository.save(client);
-    }
+
 
     public Client getClientAccountInfo(String clientToken){
-        System.out.println(clientToken);
         return clientRepository.findById(clientToken).orElse(null);
     }
 
 
     @Transient
     public Client register(Client client){
-        client.setToken(UUID.randomUUID().toString());
+        if(getClientAccountInfo(client.getToken()) != null){
+            return null;
+        }
         return clientRepository.save(client);
-
     }
 
     @Transient

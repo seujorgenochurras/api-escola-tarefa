@@ -3,6 +3,8 @@ package io.github.seujorgenochurras.front.controller;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import io.github.seujorgenochurras.front.Main;
+import io.github.seujorgenochurras.front.config.Scenes;
 import io.github.seujorgenochurras.front.domain.Product;
 import io.github.seujorgenochurras.front.domain.User;
 import javafx.collections.ObservableList;
@@ -67,5 +69,9 @@ public class MangeProductController implements Initializable {
         TreeItem<Product> productTreeItems = new RecursiveTreeItem<>(products, RecursiveTreeObject::getChildren);
         productsView.setRoot(productTreeItems);
         productsView.setShowRoot(false);
+    }
+    @FXML
+    private void closePageButton(){
+        Main.getStageManager().switchScene(Scenes.PRODUCT_PAGE);
     }
 }

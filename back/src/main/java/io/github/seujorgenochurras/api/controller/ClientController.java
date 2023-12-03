@@ -36,13 +36,15 @@ public class ClientController {
     private ClientDtoAssembler clientDtoAssembler;
 
     @RequestMapping(path = "/register/client")
-    public ResponseEntity<Client> registerClient(
+    public ResponseEntity<Object> registerClient(
             @RequestBody @Validated @NotNull ClientRegisterDto registerDto) {
 
         Client client = clientDtoAssembler.assembleRegistration(registerDto);
 
-        clientService.save(client);
-
+        Client persistedClient = clientService.register(client);
+        if(persistedClient == null){
+            return new ResponseEntity<>("Usuario já existente", HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(client, HttpStatus.CREATED);
     }
 

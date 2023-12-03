@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
+import io.github.seujorgenochurras.front.domain.User;
+import io.github.seujorgenochurras.front.dto.UserLoginDto;
 import io.github.seujorgenochurras.front.service.UserService;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 import io.github.seujorgenochurras.front.util.ValidatorBoolean;
@@ -33,7 +35,7 @@ public class LoginController implements Initializable {
     @FXML
     private JFXTextField userField;
 
-    private UserService userService;
+    private static final UserService userService = new UserService();
 
     @FXML
     public void onRegisterButtonClick() {
@@ -47,15 +49,27 @@ public class LoginController implements Initializable {
 
     @FXML
     public void onLoginButtonAction() {
-        if (!validateFields()) PopupUtil.showAlertMessage("Campos inválidos foram encontrados!");
-
-
-
+        if (!validateFields()) {
+            PopupUtil.showAlertMessage("Campos inválidos foram encontrados!");
+            return;
+        }
+        boolean wasSuccessfulLogin = userService.loginAndSaveUser(parseFields());
+        if (!wasSuccessfulLogin) {
+            return;
+        }
+        User.gotoProductsPage();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addValidators();
+    }
+
+    private UserLoginDto parseFields() {
+        UserLoginDto userLoginDto = new UserLoginDto();
+        userLoginDto.setPassword(passwordField.getText());
+        userLoginDto.setUsername(userField.getText());
+        return userLoginDto;
     }
 
     private boolean validateFields() {

@@ -4,6 +4,7 @@ import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
 import io.github.seujorgenochurras.front.dto.UserDto;
 import io.github.seujorgenochurras.front.exception.UserNotSellerException;
+import io.github.seujorgenochurras.front.util.PopupUtil;
 
 public class User {
     private static UserDto currentUser = new UserDto();
@@ -25,6 +26,15 @@ public class User {
             throw new UserNotSellerException(currentUser + " is not a seller");
         }
         Main.getStageManager().switchScene(Scenes.MANAGE_PRODUCT);
+    }
+
+    public static void gotoProductsPage(){
+        if(currentUser.getToken() == null){
+            PopupUtil.showErrorMessage("Você não está logado");
+            return;
+        }
+        Main.getStageManager().switchScene(Scenes.PRODUCT_PAGE);
+
     }
 
     public static SellerService getSellerService(){

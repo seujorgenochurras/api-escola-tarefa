@@ -6,28 +6,48 @@ import io.github.seujorgenochurras.front.api.DefaultMappings;
 import io.github.seujorgenochurras.front.domain.User;
 import io.github.seujorgenochurras.front.dto.UserDto;
 import io.github.seujorgenochurras.front.dto.UserLoginDto;
+import io.github.seujorgenochurras.front.dto.UserRegisterDto;
 import io.github.seujorgenochurras.front.request.Response;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 
 public class UserService {
-    /***
+    /**
      *
      * @return true if successfully registered user
      */
-    public boolean registerUser(UserDto userDto){
+    public boolean registerAndSaveUser(UserRegisterDto userRegisterDto){
 
-        //TODO
+        Response response = ApiRequest.postRequest(DefaultMappings.REGISTER_CLIENT)
+                .body(gson.toJson(userRegisterDto)).request();
+
+        if(response.getStatusCode() != 201) {
+            PopupUtil.showErrorMessage(response.getBody(), "Ok");
+            return false;
+        }
+
+        UserDto userDto = gson.fromJson(response.getBody(), UserDto.class);
+        User.setUser(userDto);
+        return true;
+    }
+
+    public boolean registerAndSaveUserPersonalInfo(){
+        return false;
+    }
+
+    public boolean registerAndSaveUserAddress(){
         return false;
     }
 
     private static final Gson gson = new Gson();
-    public boolean loginUser(UserLoginDto userLoginDto){
+    public boolean loginAndSaveUser(UserLoginDto userLoginDto){
         Response response = ApiRequest.postRequest(DefaultMappings.LOGIN_CLIENT)
                 .body(gson.toJson(userLoginDto)).request();
-        if(response.getStatusCode() != 201) {
-            PopupUtil.showErrorMessage(response.getBody());
+
+        if(response.getStatusCode() != 200) {
+            PopupUtil.showErrorMessage(response.getBody(), "Ok");
             return false;
         }
+
         String userToken = response.getBody();
         User.setUser(getUserAccountInfo(userToken));
         return true;

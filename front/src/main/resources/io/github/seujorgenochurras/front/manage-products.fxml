@@ -19,7 +19,7 @@
                   <Font size="33.0" />
                </font>
             </Label>
-            <Label fx:id="closePageButton" layoutX="608.0" layoutY="14.0" prefHeight="26.0" prefWidth="14.0" text="X">
+            <Label fx:id="closePageButton" layoutX="608.0" layoutY="14.0" onMouseClicked="#closePageButton" prefHeight="26.0" prefWidth="14.0" text="X">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
