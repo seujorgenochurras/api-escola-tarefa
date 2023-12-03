@@ -11,7 +11,7 @@ public class User {
     public static UserDto getCurrentUser() {
         return currentUser;
     }
-    public static UserDto login(UserDto userDto){
+    public static UserDto setUser(UserDto userDto){
         currentUser = userDto;
         return currentUser;
     }

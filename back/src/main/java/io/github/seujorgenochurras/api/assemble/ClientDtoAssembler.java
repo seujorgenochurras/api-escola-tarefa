@@ -2,8 +2,8 @@ package io.github.seujorgenochurras.api.assemble;
 
 
 import io.github.seujorgenochurras.api.dto.ClientRegisterDto;
+import io.github.seujorgenochurras.api.util.HashUtil;
 import io.github.seujorgenochurras.domain.model.Client;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 
@@ -11,6 +11,10 @@ import org.springframework.stereotype.Component;
 public class ClientDtoAssembler {
 
     public Client assembleRegistration(ClientRegisterDto clientDto){
-        return new ModelMapper().map(clientDto, Client.class);
+        Client client = new Client();
+        client.setUsername(clientDto.getUsername());
+        client.setIsSeller(clientDto.isSeller());
+        client.setToken(HashUtil.toSHA1((clientDto.getUsername()+clientDto.getPassword()).getBytes()));
+        return client;
     }
 }

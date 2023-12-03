@@ -6,63 +6,40 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private String token;
 
     @NotNull
-    private String name;
+    @Column(name = "username")
+    private String username;
+
     @NotNull
-    @Embedded
-    private Address address;
-    @NotNull
-    private int age;
-    @NotNull
-    @Enumerated(EnumType.ORDINAL)
-    private Gender gender;
+    private boolean isSeller;
 
-
-    public String getId() {
-        return id;
+    public boolean isSeller() {
+        return isSeller;
     }
 
-    public Client setId(String id) {
-        this.id = id;
+    public Client setIsSeller(boolean seller) {
+        isSeller = seller;
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getToken() {
+        return token;
     }
 
-    public Client setName(String name) {
-        this.name = name;
+    public Client setToken(String token) {
+        this.token = token;
         return this;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getUsername() {
+        return username;
     }
 
-    public Client setAddress(Address address) {
-        this.address = address;
+    public Client setUsername(String username) {
+        this.username = username;
         return this;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public Client setAge(int age) {
-        this.age = age;
-        return this;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public Client setGender(Gender gender) {
-        this.gender = gender;
-        return this;
-    }
 }

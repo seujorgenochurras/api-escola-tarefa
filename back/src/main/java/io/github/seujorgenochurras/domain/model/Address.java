@@ -1,20 +1,19 @@
 package io.github.seujorgenochurras.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 //todo add constructor that fills with only zipCode
-@Embeddable
+@Entity
 public class Address {
-
-    public Address() {
-    }
+    @Id
+    private Integer id;
 
     @NotNull
     @Length(max = 20) //todo verify maximum length
-    private String zipCode;
+    private String cepCode;
 
     @NotNull
     private String streetName;
@@ -22,32 +21,79 @@ public class Address {
     @NotNull
     private String addressNumber;
 
+    @NotNull
+    private String neightboorhood;
+
+    @NotNull
+    private String city;
+
+    @NotNull
+    private String state;
+
     @Column(name = "additional_info")
     private String additionalInfo;
 
-    public Address(String zipCode, String streetName, String addressNumber, String additionalInfo) {
-        this.zipCode = zipCode;
-        this.streetName = streetName;
-        this.addressNumber = addressNumber;
-        this.additionalInfo = additionalInfo;
+    public Integer getId() {
+        return id;
     }
 
-    public Address(String zipCode, String streetName, String addressNumber) {
-        this.zipCode = zipCode;
-        this.streetName = streetName;
-        this.addressNumber = addressNumber;
+    public Address setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getCepCode() {
+        return cepCode;
+    }
+
+    public Address setCepCode(String cepCode) {
+        this.cepCode = cepCode;
+        return this;
     }
 
     public String getStreetName() {
         return streetName;
     }
 
+    public Address setStreetName(String streetName) {
+        this.streetName = streetName;
+        return this;
+    }
+
     public String getAddressNumber() {
         return addressNumber;
+    }
+
+    public Address setAddressNumber(String addressNumber) {
+        this.addressNumber = addressNumber;
+        return this;
+    }
+
+    public String getNeightboorhood() {
+        return neightboorhood;
+    }
+
+    public Address setNeightboorhood(String neightboorhood) {
+        this.neightboorhood = neightboorhood;
+        return this;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Address setCity(String city) {
+        this.city = city;
+        return this;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public Address setState(String state) {
+        this.state = state;
+        return this;
     }
 
     public String getAdditionalInfo() {
@@ -57,30 +103,5 @@ public class Address {
     public Address setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
         return this;
-    }
-
-    public Address setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-        return this;
-    }
-
-    public Address setStreetName(String streetName) {
-        this.streetName = streetName;
-        return this;
-    }
-
-    public Address setAddressNumber(String addressNumber) {
-        this.addressNumber = addressNumber;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "zipCode='" + zipCode + '\'' +
-                ", streetName='" + streetName + '\'' +
-                ", addressNumber='" + addressNumber + '\'' +
-                ", additionalInfo='" + additionalInfo + '\'' +
-                '}';
     }
 }

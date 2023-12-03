@@ -14,7 +14,7 @@ public class FXMLLoaderUtils {
          try {
             return fxmlLoader.load();
         } catch (IOException e) {
-            ErrorUtil.showErrorMessage("Algo muito errado aconteceu\n" + e.getMessage());
+            PopupUtil.showErrorMessage("Algo muito errado aconteceu\n" + e.getMessage());
             e.printStackTrace();
             return null;
         }

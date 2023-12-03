@@ -13,6 +13,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, String> {
 
 
-    @Query("select * from product where product.isActive = true")
+    @Query(value = "SELECT * FROM product p WHERE p.is_active = true", nativeQuery = true)
     List<Product> findALlActiveProducts();
 }

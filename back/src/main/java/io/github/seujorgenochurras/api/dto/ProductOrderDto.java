@@ -1,9 +1,13 @@
 package io.github.seujorgenochurras.api.dto;
 
+import io.github.seujorgenochurras.domain.model.Address;
+
 public class ProductOrderDto {
     private String client;
 
     private String product;
+
+    private AddressDto address;
 
     private int amount;
 

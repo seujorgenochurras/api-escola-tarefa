@@ -2,8 +2,10 @@ package io.github.seujorgenochurras.api.controller;
 
 import io.github.seujorgenochurras.api.assemble.ClientDtoAssembler;
 import io.github.seujorgenochurras.api.assemble.ProductOrderAssembler;
+import io.github.seujorgenochurras.api.dto.ClientLoginDto;
 import io.github.seujorgenochurras.api.dto.ClientRegisterDto;
 import io.github.seujorgenochurras.api.dto.ProductOrderDto;
+import io.github.seujorgenochurras.api.util.HashUtil;
 import io.github.seujorgenochurras.domain.model.Client;
 import io.github.seujorgenochurras.domain.model.ProductOrder;
 import io.github.seujorgenochurras.domain.service.ClientService;
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
@@ -32,7 +35,7 @@ public class ClientController {
     @Autowired
     private ClientDtoAssembler clientDtoAssembler;
 
-    @RequestMapping(path =  "/register/client")
+    @RequestMapping(path = "/register/client")
     public ResponseEntity<Client> registerClient(
             @RequestBody @Validated @NotNull ClientRegisterDto registerDto) {
 
@@ -46,7 +49,7 @@ public class ClientController {
 
     @RequestMapping(path = "client/buy")
     @PostMapping
-    public ResponseEntity<ProductOrder> orderProduct(@RequestBody ProductOrderDto productOrderDto){
+    public ResponseEntity<ProductOrder> orderProduct(@RequestBody ProductOrderDto productOrderDto) {
         ProductOrder productOrder = productOrderAssembler.assemble(productOrderDto);
 
 
@@ -54,11 +57,35 @@ public class ClientController {
     }
 
     @GetMapping(path = "search/client")
-    public ResponseEntity<List<Client>> searchClients(){
+    public ResponseEntity<List<Client>> searchClients() {
         List<Client> clients = clientService.getAllClients();
         return new ResponseEntity<>(clients, HttpStatus.OK);
     }
 
+    @PostMapping(path = "client/account")
+    public ResponseEntity<Object> getClientAccountInfo(@RequestBody String clientToken) {
+        Client client = clientService.getClientAccountInfo(clientToken);
+
+        if (client == null) {
+            return new ResponseEntity<>("Algo de errado aconteceu!", HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(client, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "login/client")
+    public ResponseEntity<String> loginClient(@RequestBody ClientLoginDto clientLoginDto) {
+
+        String clientToken = HashUtil.toSHA1(
+                (clientLoginDto.getUsername() + clientLoginDto.getPassword()).getBytes(StandardCharsets.UTF_8));
+
+        //TODO This is bad, not good. I'm so sorry to whoever put an actual password here
+        Client loggedInClient = clientService.login(clientToken);
+
+        if (loggedInClient == null) {
+            return new ResponseEntity<>("Senha ou usúario estão inválidos", HttpStatus.UNAUTHORIZED);
+        }
+        return new ResponseEntity<>(clientToken, HttpStatus.OK);
+    }
 
 
 }

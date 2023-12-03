@@ -33,20 +33,8 @@ public class Product {
     private double price;
 
     @NotNull
-    @Column(name = "country", length = 30)
-    private String country;
-
-    @NotNull
-    @Column(name = "quantity", precision = 3)
-    private double minimalQuantity;
-
-    @NotNull
-    @Column(name = "stock")
-    private int stock;
-
-    @NotNull
-    @Column(name = "quantified_as", length = 3)
-    private String quantifiedAs;
+    @Column(name = "category")
+    private String category;
 
 
     public String getId() {
@@ -85,39 +73,12 @@ public class Product {
         return this;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCategory() {
+        return category;
     }
 
-    public Product setCountry(String country) {
-        this.country = country;
-        return this;
-    }
-
-    public double getMinimalQuantity() {
-        return minimalQuantity;
-    }
-
-    public Product setMinimalQuantity(double minimalQuantity) {
-        this.minimalQuantity = minimalQuantity;
-        return this;
-    }
-
-    public String getQuantifiedAs() {
-        return quantifiedAs;
-    }
-
-    public Product setQuantifiedAs(String quantifiedAs) {
-        this.quantifiedAs = quantifiedAs;
-        return this;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public Product setStock(int stock) {
-        this.stock = stock;
+    public Product setCategory(String category) {
+        this.category = category;
         return this;
     }
 
@@ -148,10 +109,7 @@ public class Product {
                 ", seller=" + seller +
                 ", onSale=" + onSale +
                 ", price=" + price +
-                ", country='" + country + '\'' +
-                ", minimalQuantity=" + minimalQuantity +
-                ", stock=" + stock +
-                ", quantifiedAs='" + quantifiedAs + '\'' +
+                ", quantifiedAs='" + category + '\'' +
                 '}';
     }
 }
