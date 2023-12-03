@@ -5,7 +5,7 @@ import io.github.seujorgenochurras.front.config.Scenes;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ForgotPasswordPageController {
+public class ForgotPasswordController {
 
     @FXML
     private Button registerButton;

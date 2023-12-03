@@ -44,4 +44,14 @@ public class PersonalInformation {
         this.CPF = CPF;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "PersonalInformation{" +
+                "name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", CPF='" + CPF + '\'' +
+                '}';
+    }
 }

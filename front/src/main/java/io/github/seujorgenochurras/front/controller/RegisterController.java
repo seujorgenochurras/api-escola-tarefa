@@ -8,7 +8,7 @@ import io.github.seujorgenochurras.front.config.Scenes;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class RegisterPageController {
+public class RegisterController {
     @FXML
     private Label closeButton;
 

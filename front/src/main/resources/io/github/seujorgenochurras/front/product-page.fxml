@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="715.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.ProductPageController">
+<Pane prefHeight="715.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.ProductController">
    <children>
-      <Label layoutX="360.0" layoutY="33.0" text="Bem Vindo a Loja">
+      <Label layoutX="424.0" layoutY="26.0" text="Bem Vindo a Loja">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <Label fx:id="closeButton" layoutX="1060.0" layoutY="14.0" onMouseClicked="#onCloseButton" prefHeight="26.0" prefWidth="14.0" text="X">
+      <Label fx:id="closeButton" layoutX="1069.0" layoutY="33.0" onMouseClicked="#onCloseButton" prefHeight="26.0" prefWidth="14.0" text="X">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -28,7 +28,7 @@
             <Bloom threshold="0.23" />
          </effect>
       </Label>
-      <ScrollPane layoutX="37.0" layoutY="81.0" prefHeight="554.0" prefWidth="1018.0">
+      <ScrollPane layoutX="59.0" layoutY="81.0" prefHeight="554.0" prefWidth="1018.0">
          <content>
             <GridPane fx:id="productGrid" hgap="20.0" vgap="10.0">
               <columnConstraints>
@@ -40,5 +40,6 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <Pane fx:id="manageProductsPane" layoutX="82.0" layoutY="16.0" prefHeight="0.0" prefWidth="0.0" />
    </children>
 </Pane>

@@ -5,10 +5,14 @@ import com.jfoenix.controls.JFXTextField;
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class LoginPageController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginController implements Initializable {
 
     @FXML
     private Button loginButton;
@@ -25,8 +29,6 @@ public class LoginPageController {
     @FXML
     private JFXTextField userField;
 
-
-
     @FXML
     public void onRegisterButtonClick(){
         Main.getStageManager().switchScene(Scenes.REGISTER);
@@ -37,5 +39,8 @@ public class LoginPageController {
         Main.getStageManager().switchScene(Scenes.FORGOT_PASSWORD);
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
 }

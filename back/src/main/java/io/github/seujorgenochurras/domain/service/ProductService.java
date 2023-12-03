@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,6 +19,9 @@ public class ProductService {
     private ProductRepository productRepository;
 
 
+    public List<Product> getAllActiveProducts(){
+        return productRepository.findAll();
+    }
     public Product save(Product product){
         product.setId(UUID.randomUUID().toString());
         System.out.println(product);

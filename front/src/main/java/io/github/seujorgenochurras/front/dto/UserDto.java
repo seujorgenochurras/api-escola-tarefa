@@ -9,12 +9,23 @@ public class UserDto {
     //I know it should be hashed, but I don't have time to do SHA256 rn
     private String password;
 
+    private boolean isSeller = true;
+
     public Address getAddress() {
         return address;
     }
 
     public UserDto setAddress(Address address) {
         this.address = address;
+        return this;
+    }
+
+    public boolean isSeller() {
+        return isSeller;
+    }
+
+    public UserDto setSeller(boolean seller) {
+        isSeller = seller;
         return this;
     }
 
@@ -43,5 +54,16 @@ public class UserDto {
     public UserDto setPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "address=" + address +
+                ", personalInformation=" + personalInformation +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", isSeller=" + isSeller +
+                '}';
     }
 }

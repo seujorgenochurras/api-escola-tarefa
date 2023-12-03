@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClientDtoAssembler {
 
-
     public Client assembleRegistration(ClientRegisterDto clientDto){
         return new ModelMapper().map(clientDto, Client.class);
     }

@@ -3,6 +3,7 @@ package io.github.seujorgenochurras.front.domain;
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
 import io.github.seujorgenochurras.front.dto.UserDto;
+import io.github.seujorgenochurras.front.exception.UserNotSellerException;
 
 public class User {
     private static UserDto currentUser = new UserDto();
@@ -17,6 +18,20 @@ public class User {
     public static void logout(){
         currentUser = new UserDto();
         Main.getStageManager().switchScene(Scenes.LOGIN);
+    }
+
+    public static void gotoMangeProductsPage(){
+        if(!currentUser.isSeller()){
+            throw new UserNotSellerException(currentUser + " is not a seller");
+        }
+        Main.getStageManager().switchScene(Scenes.MANAGE_PRODUCT);
+    }
+
+    public static SellerService getSellerService(){
+        if(!currentUser.isSeller()) {
+            throw new UserNotSellerException(currentUser + " is not a seller");
+        }
+        return new SellerService();
     }
 
     public static boolean isLoggedIn(){

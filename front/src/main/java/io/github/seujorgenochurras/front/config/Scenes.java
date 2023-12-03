@@ -7,7 +7,7 @@ public enum Scenes {
 
     REGISTER("register.fxml"),
 
-    PRODUCT("product-page.fxml"),
+    MANAGE_PRODUCT("manage-products.fxml"),
 
     REGISTER_INFO("register-info.fxml"),
 
