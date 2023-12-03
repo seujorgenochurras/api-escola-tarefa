@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.MangeProductController">
+   <children>
+      <Pane layoutX="61.0" layoutY="17.0" prefHeight="579.0" prefWidth="643.0">
+         <children>
+            <Label layoutX="135.0" layoutY="7.0" text="Administrar Produtos">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Label fx:id="closePageButton" layoutX="608.0" layoutY="14.0" prefHeight="26.0" prefWidth="14.0" text="X">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <Bloom threshold="0.23" />
+               </effect>
+            </Label>
+            <JFXTreeTableView fx:id="productsView" layoutX="29.0" layoutY="67.0" prefHeight="400.0" prefWidth="594.0">
+               <columns>
+                  <TreeTableColumn fx:id="productIdColumn" prefWidth="104.0" text="Id" />
+                  <TreeTableColumn fx:id="productNameColumn" prefWidth="144.0" text="Nome" />
+                  <TreeTableColumn fx:id="productPriceColumn" prefWidth="98.0" text="Preço" />
+                  <TreeTableColumn fx:id="productCategoryColumn" prefWidth="130.0" text="Categoria" />
+                  <TreeTableColumn fx:id="productSoldAmount" prefWidth="115.0" text="Qntd Vendas" />
+               </columns>
+            </JFXTreeTableView>
+            <Button fx:id="registerProductButton" layoutX="43.0" layoutY="512.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="184.0" style="-fx-background-color: #387ff8;" text="Adicionar Produto" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="removeProductButton" layoutX="424.0" layoutY="512.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="184.0" style="-fx-background-color: #387ff8;" text="Remover Produto" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
