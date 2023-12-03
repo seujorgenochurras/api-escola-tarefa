@@ -34,11 +34,14 @@ public class ProductOrder {
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 
-
     @NotNull
     @Column(name = "amount")
     private int amount;
 
+    @OneToOne
+    @NotNull
+    @JoinColumn(name = "address_fk")
+    private Address address;
 
     public Product getProduct() {
         return product;
@@ -46,6 +49,15 @@ public class ProductOrder {
 
     public ProductOrder setProduct(Product product) {
         this.product = product;
+        return this;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public ProductOrder setAddress(Address address) {
+        this.address = address;
         return this;
     }
 

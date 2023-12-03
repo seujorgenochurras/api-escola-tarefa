@@ -1,59 +1,43 @@
 package io.github.seujorgenochurras.api.dto;
 
-import io.github.seujorgenochurras.domain.model.Address;
-import io.github.seujorgenochurras.domain.model.Gender;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class ClientRegisterDto {
     @NotNull
-    private String name;
+    private String username;
+
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Size(max = 200)
+    private String password;
+
     @NotNull
-    private int age;
-    @NotNull
-    @Valid
-    @Embedded
-    private Address address;
-
-    public String getName() {
-        return name;
+    private boolean isSeller = false;
+    public boolean isSeller() {
+        return isSeller;
     }
 
-    public ClientRegisterDto setName(String name) {
-        this.name = name;
+    public ClientRegisterDto setSeller(boolean seller) {
+        isSeller = seller;
         return this;
     }
 
-    public Gender getGender() {
-        return gender;
+    public String getPassword() {
+        return password;
     }
 
-    public ClientRegisterDto setGender(Gender gender) {
-        this.gender = gender;
+    public ClientRegisterDto setPassword(String password) {
+        this.password = password;
         return this;
     }
 
-    public int getAge() {
-        return age;
+    public String getUsername() {
+        return username;
     }
 
-    public ClientRegisterDto setAge(int age) {
-        this.age = age;
+    public ClientRegisterDto setUsername(String username) {
+        this.username = username;
         return this;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public ClientRegisterDto setAddress(Address address) {
-        this.address = address;
-        return this;
-    }
 }

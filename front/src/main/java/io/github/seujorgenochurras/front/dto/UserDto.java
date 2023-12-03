@@ -1,15 +1,21 @@
 package io.github.seujorgenochurras.front.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserDto {
+
     private Address address;
+
     private PersonalInformation personalInformation;
 
+    @SerializedName("userName")
     private String userName;
 
-    //I know it should be hashed, but I don't have time to do SHA256 rn
-    private String password;
+    @SerializedName("id")
+    private String token;
 
-    private boolean isSeller = true;
+    @SerializedName("isSeller")
+    private boolean isSeller;
 
     public Address getAddress() {
         return address;
@@ -21,7 +27,8 @@ public class UserDto {
     }
 
     public boolean isSeller() {
-        return isSeller;
+        //TODO
+        return true;
     }
 
     public UserDto setSeller(boolean seller) {
@@ -47,12 +54,12 @@ public class UserDto {
         return this;
     }
 
-    public String getPassword() {
-        return password;
+    public String getToken() {
+        return token;
     }
 
-    public UserDto setPassword(String password) {
-        this.password = password;
+    public UserDto setToken(String token) {
+        this.token = token;
         return this;
     }
 
@@ -62,7 +69,7 @@ public class UserDto {
                 "address=" + address +
                 ", personalInformation=" + personalInformation +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
                 ", isSeller=" + isSeller +
                 '}';
     }
