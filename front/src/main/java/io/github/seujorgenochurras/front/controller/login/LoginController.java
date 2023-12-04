@@ -1,15 +1,15 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.login;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
 import io.github.seujorgenochurras.front.domain.User;
-import io.github.seujorgenochurras.front.dto.UserLoginDto;
-import io.github.seujorgenochurras.front.service.UserService;
+import io.github.seujorgenochurras.front.api.dto.UserLoginDto;
+import io.github.seujorgenochurras.front.api.service.UserService;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 import io.github.seujorgenochurras.front.util.ValidatorBoolean;
-import io.github.seujorgenochurras.front.validator.DefaultValidators;
+import io.github.seujorgenochurras.front.validator.DefaultFieldValidators;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -80,8 +80,8 @@ public class LoginController implements Initializable {
     }
 
     private void addValidators() {
-        userField.getValidators().add(DefaultValidators.generateNotBlankValidator());
-        passwordField.getValidators().add(DefaultValidators.generateNotBlankValidator());
+        userField.getValidators().add(DefaultFieldValidators.generateNotBlankValidator());
+        passwordField.getValidators().add(DefaultFieldValidators.generateNotBlankValidator());
 
     }
 

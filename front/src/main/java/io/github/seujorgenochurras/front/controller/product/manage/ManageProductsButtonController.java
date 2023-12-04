@@ -1,4 +1,4 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.product.manage;
 
 import io.github.seujorgenochurras.front.domain.User;
 import javafx.fxml.FXML;

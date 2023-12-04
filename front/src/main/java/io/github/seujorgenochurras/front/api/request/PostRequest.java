@@ -1,6 +1,6 @@
-package io.github.seujorgenochurras.front.request;
+package io.github.seujorgenochurras.front.api.request;
 
-import io.github.seujorgenochurras.front.util.RequestUtils;
+import io.github.seujorgenochurras.front.api.util.RequestUtils;
 
 import java.net.http.HttpRequest;
 

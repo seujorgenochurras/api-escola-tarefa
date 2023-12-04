@@ -1,4 +1,4 @@
-package io.github.seujorgenochurras.front.util;
+package io.github.seujorgenochurras.front.api.util;
 
 import java.io.IOException;
 import java.net.URI;

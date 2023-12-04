@@ -7,9 +7,9 @@ public enum DefaultMappings {
 
     ORDER_PRODUCT("client/buy"),
 
-    REGISTER_CLIENT("register/client");
+    REGISTER_CLIENT("register/client"),
 
-
+    REGISTER_PERSONAL_INFO("");
 
     private final String mapping;
 

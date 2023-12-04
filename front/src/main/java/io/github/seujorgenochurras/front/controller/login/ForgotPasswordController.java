@@ -1,4 +1,4 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.login;
 
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;

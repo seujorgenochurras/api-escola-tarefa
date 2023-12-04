@@ -1,6 +1,6 @@
-package io.github.seujorgenochurras.front.service;
+package io.github.seujorgenochurras.front.api.service;
 
-import io.github.seujorgenochurras.front.dto.ProductDto;
+import io.github.seujorgenochurras.front.api.dto.ProductDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

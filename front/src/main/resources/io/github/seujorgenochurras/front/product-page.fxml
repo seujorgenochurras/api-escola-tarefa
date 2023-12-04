@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="715.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.ProductController">
+<Pane prefHeight="715.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.product.ProductController">
    <children>
       <Label layoutX="424.0" layoutY="26.0" text="Bem Vindo a Loja">
          <font>

@@ -1,4 +1,4 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.product.manage;
 
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;

@@ -9,18 +9,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="765.0"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.RegisterInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.register.RegisterInfoController">
    <children>
       <Pane layoutX="61.0" layoutY="17.0" prefHeight="579.0" prefWidth="643.0">
          <children>
             <Pane layoutX="163.0" layoutY="102.0" prefHeight="277.0" prefWidth="317.0">
                <children>
-                  <JFXTextField layoutX="83.0" layoutY="41.0" prefHeight="26.0" prefWidth="152.0" promptText="Nome" />
-                  <JFXTextField layoutX="83.0" layoutY="86.0" prefHeight="26.0" prefWidth="152.0" promptText="Número" />
-                  <JFXTextField layoutX="83.0" layoutY="125.0" prefHeight="26.0" prefWidth="152.0" promptText="E-mail" />
-                  <JFXTextField layoutX="83.0" layoutY="167.0" prefHeight="26.0" prefWidth="152.0" promptText="CPF" />
-                  <Label fx:id="registerLaterButton" layoutX="74.0" layoutY="219.0" onMouseClicked="#onRegisterLater" text="Prefiro preencher depois" textFill="#2619dd">
+                  <JFXTextField fx:id="nameField" layoutX="75.0" layoutY="42.0" prefHeight="26.0" prefWidth="169.0" promptText="Nome" />
+                  <JFXTextField fx:id="phoneNumberField" layoutX="74.0" layoutY="90.0" prefHeight="26.0" prefWidth="169.0" promptText="Número de celular" />
+                  <JFXTextField fx:id="emailField" layoutX="74.0" layoutY="139.0" prefHeight="26.0" prefWidth="169.0" promptText="E-mail" />
+                  <JFXTextField fx:id="cpfField" layoutX="75.0" layoutY="180.0" prefHeight="26.0" prefWidth="169.0" promptText="CPF" />
+                  <Label fx:id="registerLaterButton" layoutX="75.0" layoutY="230.0" onMouseClicked="#onRegisterLater" text="Prefiro preencher depois" textFill="#2619dd">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

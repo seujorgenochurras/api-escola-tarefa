@@ -2,7 +2,7 @@ package io.github.seujorgenochurras.front.domain;
 
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
-import io.github.seujorgenochurras.front.dto.UserDto;
+import io.github.seujorgenochurras.front.api.dto.UserDto;
 import io.github.seujorgenochurras.front.exception.UserNotSellerException;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 
@@ -31,6 +31,7 @@ public class User {
     public static void gotoProductsPage(){
         if(currentUser.getToken() == null){
             PopupUtil.showErrorMessage("Você não está logado");
+            User.logout();
             return;
         }
         Main.getStageManager().switchScene(Scenes.PRODUCT_PAGE);

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.ManageProductsButtonController">
+<Pane maxHeight="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.product.manage.ManageProductsButtonController">
    <children>
       <Button fx:id="manageProductsButton" mnemonicParsing="false" onAction="#onManageProductsAction" prefHeight="53.0" prefWidth="220.0" style="-fx-background-color: #387ff8;" text="Administrar Produtos" textFill="WHITE">
          <font>

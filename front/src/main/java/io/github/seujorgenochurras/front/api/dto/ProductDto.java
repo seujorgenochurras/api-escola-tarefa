@@ -1,4 +1,4 @@
-package io.github.seujorgenochurras.front.dto;
+package io.github.seujorgenochurras.front.api.dto;
 
 public class ProductDto {
     private String name;

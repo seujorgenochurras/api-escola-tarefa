@@ -1,4 +1,4 @@
-package io.github.seujorgenochurras.front.request;
+package io.github.seujorgenochurras.front.api.request;
 
 import java.net.http.HttpResponse;
 

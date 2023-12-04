@@ -1,6 +1,6 @@
-package io.github.seujorgenochurras.front.service;
+package io.github.seujorgenochurras.front.api.service;
 
-import io.github.seujorgenochurras.front.dto.ProductOrderDto;
+import io.github.seujorgenochurras.front.api.dto.ProductOrderDto;
 
 public class ProductOrderService {
 

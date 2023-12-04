@@ -1,8 +1,8 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.product;
 
 import io.github.seujorgenochurras.front.domain.User;
-import io.github.seujorgenochurras.front.dto.ProductDto;
-import io.github.seujorgenochurras.front.service.ProductService;
+import io.github.seujorgenochurras.front.api.dto.ProductDto;
+import io.github.seujorgenochurras.front.api.service.ProductService;
 import io.github.seujorgenochurras.front.util.FXMLLoaderUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,15 +1,15 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.register;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import io.github.seujorgenochurras.front.Main;
 import io.github.seujorgenochurras.front.config.Scenes;
-import io.github.seujorgenochurras.front.dto.UserRegisterDto;
-import io.github.seujorgenochurras.front.service.UserService;
+import io.github.seujorgenochurras.front.api.dto.UserRegisterDto;
+import io.github.seujorgenochurras.front.api.service.UserService;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 import io.github.seujorgenochurras.front.util.ValidatorBoolean;
-import io.github.seujorgenochurras.front.validator.DefaultValidators;
+import io.github.seujorgenochurras.front.validator.DefaultFieldValidators;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -51,9 +51,9 @@ public class RegisterController implements Initializable {
     }
 
     private void addValidators() {
-        userField.getValidators().add(DefaultValidators.generateNotBlankValidator());
-        passField.getValidators().add(DefaultValidators.generateNotBlankValidator());
-        confirmPassField.getValidators().add(DefaultValidators.generateStringToBeEqualsValidator(passField));
+        userField.getValidators().add(DefaultFieldValidators.generateNotBlankValidator());
+        passField.getValidators().add(DefaultFieldValidators.generateNotBlankValidator());
+        confirmPassField.getValidators().add(DefaultFieldValidators.generateStringToBeEqualsValidator(passField));
 
     }
 

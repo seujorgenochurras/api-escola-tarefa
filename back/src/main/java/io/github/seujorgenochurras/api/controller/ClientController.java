@@ -5,8 +5,10 @@ import io.github.seujorgenochurras.api.assemble.ProductOrderAssembler;
 import io.github.seujorgenochurras.api.dto.ClientLoginDto;
 import io.github.seujorgenochurras.api.dto.ClientRegisterDto;
 import io.github.seujorgenochurras.api.dto.ProductOrderDto;
+import io.github.seujorgenochurras.api.dto.RegisterInfoDto;
 import io.github.seujorgenochurras.api.util.HashUtil;
 import io.github.seujorgenochurras.domain.model.Client;
+import io.github.seujorgenochurras.domain.model.ClientInfo;
 import io.github.seujorgenochurras.domain.model.ProductOrder;
 import io.github.seujorgenochurras.domain.service.ClientService;
 import io.github.seujorgenochurras.domain.service.ProductService;
@@ -35,6 +37,27 @@ public class ClientController {
     @Autowired
     private ClientDtoAssembler clientDtoAssembler;
 
+
+    @PostMapping(path = "/client/info")
+    public ResponseEntity<Object> getClientInfo(@RequestBody String clientToken){
+        ClientInfo persistedInfo = clientService.getClientInfo(clientToken);
+        if(persistedInfo == null){
+            return new ResponseEntity<>("Não há informações cadastradas para esse usuario", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(persistedInfo, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/register/client/info")
+    public ResponseEntity<Object> registerClientInfo(@RequestBody @Validated @NotNull
+                                                             RegisterInfoDto registerInfoDto){
+
+        ClientInfo persistedClientInfo = clientService.registerInfo(registerInfoDto);
+        if(persistedClientInfo == null){
+            return new ResponseEntity<>("Usuario não encontrado", HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(persistedClientInfo, HttpStatus.CREATED);
+
+    }
     @RequestMapping(path = "/register/client")
     public ResponseEntity<Object> registerClient(
             @RequestBody @Validated @NotNull ClientRegisterDto registerDto) {
@@ -81,7 +104,7 @@ public class ClientController {
                 (clientLoginDto.getUsername() + clientLoginDto.getPassword()).getBytes(StandardCharsets.UTF_8));
 
         //TODO This is bad, not good. I'm so sorry to whoever put an actual password here
-        Client loggedInClient = clientService.login(clientToken);
+        Client loggedInClient = clientService.findClientByToken(clientToken);
 
         if (loggedInClient == null) {
             return new ResponseEntity<>("Senha ou usúario estão inválidos", HttpStatus.UNAUTHORIZED);

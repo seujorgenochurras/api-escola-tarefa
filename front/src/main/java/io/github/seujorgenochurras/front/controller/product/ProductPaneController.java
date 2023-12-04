@@ -1,6 +1,6 @@
-package io.github.seujorgenochurras.front.controller;
+package io.github.seujorgenochurras.front.controller.product;
 
-import io.github.seujorgenochurras.front.dto.ProductDto;
+import io.github.seujorgenochurras.front.api.dto.ProductDto;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;

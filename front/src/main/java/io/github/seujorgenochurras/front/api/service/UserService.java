@@ -1,13 +1,13 @@
-package io.github.seujorgenochurras.front.service;
+package io.github.seujorgenochurras.front.api.service;
 
 import com.google.gson.Gson;
 import io.github.seujorgenochurras.front.api.ApiRequest;
 import io.github.seujorgenochurras.front.api.DefaultMappings;
 import io.github.seujorgenochurras.front.domain.User;
-import io.github.seujorgenochurras.front.dto.UserDto;
-import io.github.seujorgenochurras.front.dto.UserLoginDto;
-import io.github.seujorgenochurras.front.dto.UserRegisterDto;
-import io.github.seujorgenochurras.front.request.Response;
+import io.github.seujorgenochurras.front.api.dto.UserDto;
+import io.github.seujorgenochurras.front.api.dto.UserLoginDto;
+import io.github.seujorgenochurras.front.api.dto.UserRegisterDto;
+import io.github.seujorgenochurras.front.api.request.Response;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 
 public class UserService {
@@ -30,8 +30,18 @@ public class UserService {
         return true;
     }
 
-    public boolean registerAndSaveUserPersonalInfo(){
-        return false;
+    public boolean registerAndSaveUserPersonalInfo(UserPersonalInfoDto userPersonalInfoDto){
+        Response response = ApiRequest.postRequest(DefaultMappings.CLIENT_ACCOUNT_INFO)
+                .body(gson.toJson(userPersonalInfoDto)).request();
+
+        if(response.getStatusCode() != 201) {
+            PopupUtil.showErrorMessage(response.getBody(), "Ok");
+            return false;
+        }
+
+        UserDto userDto = gson.fromJson(response.getBody(), UserDto.class);
+        User.setUser(userDto);
+        return true;
     }
 
     public boolean registerAndSaveUserAddress(){
