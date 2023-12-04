@@ -12,13 +12,14 @@ public class ClientRegisterDto {
     private String password;
 
     @NotNull
-    private boolean isSeller = false;
+    private boolean seller;
+
     public boolean isSeller() {
-        return isSeller;
+        return seller;
     }
 
     public ClientRegisterDto setSeller(boolean seller) {
-        isSeller = seller;
+        this.seller = seller;
         return this;
     }
 
@@ -40,4 +41,12 @@ public class ClientRegisterDto {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "ClientRegisterDto{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", isSeller=" + seller +
+                '}';
+    }
 }

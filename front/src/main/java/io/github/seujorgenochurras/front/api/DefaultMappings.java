@@ -9,7 +9,8 @@ public enum DefaultMappings {
 
     REGISTER_CLIENT("register/client"),
 
-    REGISTER_PERSONAL_INFO("");
+    REGISTER_PERSONAL_INFO("register/client/info"),
+    CLIENT_PERSONAL_INFO("client/info");
 
     private final String mapping;
 

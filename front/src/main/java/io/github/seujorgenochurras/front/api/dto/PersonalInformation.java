@@ -1,10 +1,19 @@
 package io.github.seujorgenochurras.front.api.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 public class PersonalInformation {
 
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("phoneNumber")
     private String phoneNumber;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("cpf")
     private String CPF;
 
 

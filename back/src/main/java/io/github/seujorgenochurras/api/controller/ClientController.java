@@ -90,7 +90,7 @@ public class ClientController {
     @PostMapping(path = "client/account")
     public ResponseEntity<Object> getClientAccountInfo(@RequestBody String clientToken) {
         Client client = clientService.getClientAccountInfo(clientToken);
-
+        System.out.println(clientToken);
         if (client == null) {
             return new ResponseEntity<>("Algo de errado aconteceu!", HttpStatus.FORBIDDEN);
         }

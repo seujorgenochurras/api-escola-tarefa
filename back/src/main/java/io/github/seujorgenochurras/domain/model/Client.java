@@ -13,6 +13,7 @@ public class Client {
     private String username;
 
     @NotNull
+    @Column(name = "is_seller")
     private boolean isSeller;
 
     public boolean isSeller() {

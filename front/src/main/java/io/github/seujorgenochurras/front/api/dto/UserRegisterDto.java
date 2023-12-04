@@ -5,14 +5,14 @@ public class UserRegisterDto {
     private String username;
     private String password;
 
-    private boolean isSeller;
+    private boolean seller;
 
     public boolean isSeller() {
-        return isSeller;
+        return seller;
     }
 
     public UserRegisterDto setIsSeller(boolean seller) {
-        isSeller = seller;
+        this.seller = seller;
         return this;
     }
 

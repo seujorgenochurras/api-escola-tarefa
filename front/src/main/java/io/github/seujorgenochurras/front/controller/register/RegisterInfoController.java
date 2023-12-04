@@ -5,9 +5,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import io.github.seujorgenochurras.front.Main;
-import io.github.seujorgenochurras.front.api.dto.UserRegisterDto;
+import io.github.seujorgenochurras.front.api.dto.RegisterClientInfoDto;
 import io.github.seujorgenochurras.front.config.Scenes;
 import io.github.seujorgenochurras.front.api.service.UserService;
+import io.github.seujorgenochurras.front.domain.User;
 import io.github.seujorgenochurras.front.util.PopupUtil;
 import io.github.seujorgenochurras.front.util.ValidatorBoolean;
 
@@ -76,7 +77,7 @@ public class RegisterInfoController implements Initializable {
         JFXButton denialButton = new JFXButton("Preencher depois");
 
         denialButton.setOnAction(event -> {
-            onRegisterButtonClick();
+            User.gotoProductsPage();
             alert.hideWithAnimation();
         });
 
@@ -97,17 +98,22 @@ public class RegisterInfoController implements Initializable {
             PopupUtil.showAlertMessage("Alguns campos estão inválidos");
             return;
         }
-        boolean successfullyRegistered = userService.registerAndSaveUser(parseFields());
-        if(!successfullyRegistered){
+        boolean successfullyRegistered = userService.registerAndSaveUserInfo(parseFields());
+        if (!successfullyRegistered) {
             return;
         }
-        Main.getStageManager().switchScene(Scenes.REGISTER_INFO);
-
+        User.gotoProductsPage();
 
     }
 
-    private UserRegisterDto parseFields() {
-        return null;
+    private RegisterClientInfoDto parseFields() {
+        RegisterClientInfoDto clientInfoDto = new RegisterClientInfoDto();
+        return clientInfoDto
+                .setClientToken(User.getCurrentUser().getToken())
+                .setCpf(cpfField.getText()) // 590.230.770-83
+                .setEmail(emailField.getText())
+                .setPhoneNumber(phoneNumberField.getText())
+                .setName(nameField.getText());
     }
 
     private boolean validateFields() {
