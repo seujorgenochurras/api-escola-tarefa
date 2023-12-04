@@ -2,10 +2,13 @@ package io.github.seujorgenochurras.front.api.dto;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class UserDto {
 
     private Address address;
 
+    private final ArrayList<ProductCartDto> cart = new ArrayList<>();
     private PersonalInformation personalInformation;
 
     @SerializedName("username")
@@ -13,6 +16,12 @@ public class UserDto {
 
     @SerializedName("token")
     private String token;
+
+    public ArrayList<ProductCartDto> getCart() {
+        return cart;
+    }
+
+
 
     @SerializedName("seller")
     private boolean isSeller;

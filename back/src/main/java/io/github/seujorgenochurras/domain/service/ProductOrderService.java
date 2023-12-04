@@ -1,6 +1,5 @@
 package io.github.seujorgenochurras.domain.service;
 
-import io.github.seujorgenochurras.domain.model.Client;
 import io.github.seujorgenochurras.domain.model.ProductOrder;
 import io.github.seujorgenochurras.domain.repository.ProductOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,12 @@ public class ProductOrderService {
     @Autowired
     private ProductOrderRepository productOrderRepository;
 
+    public List<ProductOrder> getClientOrders(String clientToken){
+        return productOrderRepository.findAllByClient(clientToken);
+    }
 
-    public List<ProductOrder> getClientOrders(Client client){
-        return productOrderRepository.findByClient(client);
+
+    public ProductOrder save(ProductOrder productOrder){
+        return productOrderRepository.save(productOrder);
     }
 }

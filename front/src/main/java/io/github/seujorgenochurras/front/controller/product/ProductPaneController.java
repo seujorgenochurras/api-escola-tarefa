@@ -1,11 +1,15 @@
 package io.github.seujorgenochurras.front.controller.product;
 
+import io.github.seujorgenochurras.front.api.dto.ProductCartDto;
 import io.github.seujorgenochurras.front.api.dto.ProductDto;
+import io.github.seujorgenochurras.front.domain.Product;
+import io.github.seujorgenochurras.front.domain.User;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -28,11 +32,31 @@ public class ProductPaneController implements Initializable {
         @FXML
         private Spinner<Integer> quantitySpinner;
 
+        private ProductDto productDto;
+
+        @Override
+        public void initialize(URL location, ResourceBundle resources) {
+                SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);
+                quantitySpinner.setValueFactory(spinnerValueFactory);
+
+        }
+
         public ProductPaneController setProduct(ProductDto productDto){
                 productNameLabel.setText(productDto.getName());
                 productPriceLabel.setText("R$" + productDto.getPrice().toString());
+                this.productDto = productDto;
                 return this;
         }
+
+        @FXML
+        private void onBuyButtonClick(){
+                ProductCartDto productCartDto = new ProductCartDto();
+                productCartDto.setProductDto(productDto)
+                                .setCount(quantitySpinner.getValue());
+                User.getCurrentUser().getCart()
+                        .add(productCartDto);
+        }
+
         public Button getBuyButton() {
                 return buyButton;
         }
@@ -78,8 +102,5 @@ public class ProductPaneController implements Initializable {
                 return this;
         }
 
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
 
-        }
 }

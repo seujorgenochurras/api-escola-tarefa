@@ -23,21 +23,19 @@ public class ProductService {
     }
 
     public Product save(Product product) {
-        product.setId(UUID.randomUUID().toString());
-        System.out.println(product);
         return productRepository.save(product);
     }
 
     @Transient
     public Product updateProduct(@Valid Product product) {
-        String productId = product.getId();
+        Integer productId = product.getId();
         productRepository.deleteById(productId);
 
         return productRepository.save(product);
     }
 
-    public Product findById(String uuid) {
-        return productRepository.findById(uuid).orElseThrow(() -> new NotFoundException("Product '" + uuid + "' not found!"));
+    public Product findById(Integer id) {
+        return productRepository.findById(id).orElseThrow(() -> new NotFoundException("Product '" + id + "' not found!"));
     }
 
 }

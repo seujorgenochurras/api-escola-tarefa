@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull

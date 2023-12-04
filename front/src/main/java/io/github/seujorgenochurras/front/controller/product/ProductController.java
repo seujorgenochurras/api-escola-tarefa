@@ -7,6 +7,7 @@ import io.github.seujorgenochurras.front.util.FXMLLoaderUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -18,24 +19,40 @@ import java.util.ResourceBundle;
 public class ProductController implements Initializable {
 
     @FXML
+    private Button cartButton;
+
+    @FXML
     private Label closeButton;
+
+    @FXML
+    private Pane manageProductsPane;
+
+    @FXML
+    private Button orderButton;
 
     @FXML
     private GridPane productGrid;
 
-    @FXML
-    private Pane manageProductsPane;
 
     private static final ProductService productService = new ProductService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initUserSpecificGUI();
-        init();
+        initProductsGrid();
     }
 
+    @FXML
+    private void onOrderButtonClick(){
 
-    public void init() {
+    }
+
+    @FXML
+    private void onCartButtonClick(){
+
+    }
+
+    public void initProductsGrid() {
         int gridColumn = 1;
         int gridRow = 0;
         for (ProductDto productDto : productService.getProducts()) {
@@ -61,6 +78,7 @@ public class ProductController implements Initializable {
     }
 
     private void initUserSpecificGUI() {
+
         if (User.getCurrentUser().isSeller()) {
             FXMLLoader manageProductsFXMLLoader = FXMLLoaderUtils.createFXMLLoader("adm-products-button.fxml");
             Pane manageProductsButtonPane = FXMLLoaderUtils.loadFXML(manageProductsFXMLLoader);

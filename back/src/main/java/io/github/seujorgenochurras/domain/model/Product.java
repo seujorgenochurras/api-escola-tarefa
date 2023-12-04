@@ -6,8 +6,8 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @NotNull
     @Column(name = "name", length = 200)
@@ -21,27 +21,27 @@ public class Product {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "seller_fk")
-    private Seller seller;
+    private Client seller;
 
     @Column(name = "on_sale")
     @NotNull
-    private boolean onSale = false;
+    private boolean is_active = false;
 
 
     @NotNull
     @Column(name = "price", precision = 2)
-    private double price;
+    private Double price;
 
     @NotNull
     @Column(name = "category")
     private String category;
 
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public Product setId(String id) {
+    public Product setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -55,11 +55,11 @@ public class Product {
         return this;
     }
 
-    public Seller getSeller() {
+    public Client getSeller() {
         return seller;
     }
 
-    public Product setSeller(Seller seller) {
+    public Product setSeller(Client seller) {
         this.seller = seller;
         return this;
     }
@@ -82,12 +82,12 @@ public class Product {
         return this;
     }
 
-    public boolean isOnSale() {
-        return onSale;
+    public boolean isIs_active() {
+        return is_active;
     }
 
-    public Product setOnSale(boolean onSale) {
-        this.onSale = onSale;
+    public Product setIs_active(boolean is_active) {
+        this.is_active = is_active;
         return this;
     }
 
@@ -107,7 +107,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", seller=" + seller +
-                ", onSale=" + onSale +
+                ", onSale=" + is_active +
                 ", price=" + price +
                 ", quantifiedAs='" + category + '\'' +
                 '}';

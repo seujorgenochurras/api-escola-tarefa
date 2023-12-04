@@ -15,19 +15,19 @@ additional_info varchar(200) not null
 
 create table client(
 token varchar(40) primary key not null,
-name varchar(200) not null,
+username varchar(200) not null,
 is_seller boolean not null
 
 );
 
-create table client_personal_info (
+create table client_info (
 id int not null primary key auto_increment,
-client_id varchar(40) not null,
+client_token varchar(40) not null,
 name varchar(140) not null,
-phoneNumber varchar(140) not null,
+phone_number varchar(140) not null,
 email varchar(140) not null,
 CPF varchar(18) not null,
-foreign key (client_id) references client(token)
+foreign key (client_token) references client(token)
 );
 
 create table client_address(
@@ -70,8 +70,10 @@ foreign key (client_fk) references client(token),
 foreign key (address_fk) references address(id)
 );
 
-
 select * from client;
+select * from client_info;
 select * from product;
 select * from product_order;
-SELECT * FROM product p WHERE p.is_active = true
+SELECT * FROM product p WHERE p.is_active = true;
+select * from client where token = "601f1889667efaebb33b8c12572835da3f027f78";
+select * from client_info where client_token = "601f1889667efaebb33b8c12572835da3f027f78";

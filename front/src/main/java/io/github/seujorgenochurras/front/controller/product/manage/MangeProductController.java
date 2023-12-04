@@ -54,9 +54,7 @@ public class MangeProductController implements Initializable {
     }
 
     public void initColumns() {
-        productNameColumn.setCellValueFactory((param) ->
-                param.getValue().getValue().nameProperty()
-        );
+        productNameColumn.setCellValueFactory((param) -> param.getValue().getValue().nameProperty());
         productCategoryColumn.setCellValueFactory((param -> param.getValue().getValue().categoryProperty()));
         productIdColumn.setCellValueFactory((param -> param.getValue().getValue().idProperty()));
         productPriceColumn.setCellValueFactory((param -> param.getValue().getValue().priceProperty()));
@@ -70,8 +68,9 @@ public class MangeProductController implements Initializable {
         productsView.setRoot(productTreeItems);
         productsView.setShowRoot(false);
     }
+
     @FXML
-    private void closePageButton(){
+    private void closePageButton() {
         Main.getStageManager().switchScene(Scenes.PRODUCT_PAGE);
     }
 }
