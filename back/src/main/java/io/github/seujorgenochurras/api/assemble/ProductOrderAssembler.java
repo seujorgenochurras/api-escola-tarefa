@@ -1,13 +1,10 @@
 package io.github.seujorgenochurras.api.assemble;
 
 import io.github.seujorgenochurras.api.dto.ProductOrderDto;
-import io.github.seujorgenochurras.domain.model.ProductOrder;
+import io.github.seujorgenochurras.domain.model.*;
 import io.github.seujorgenochurras.domain.service.ClientService;
+import io.github.seujorgenochurras.domain.service.ProductOrderService;
 import io.github.seujorgenochurras.domain.service.ProductService;
-import io.github.seujorgenochurras.domain.service.SellerService;
-import jakarta.persistence.Column;
-import org.modelmapper.Converter;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,17 +16,34 @@ public class ProductOrderAssembler {
     private ClientService clientService;
 
     @Autowired
-    private SellerService sellerService;
-
-    @Autowired
     private ProductService productService;
 
-
+    @Autowired
+    private ProductOrderService productOrderService;
 
     public ProductOrder assemble(ProductOrderDto productOrderDto) {
-        ModelMapper modelMapper = new ModelMapper();
+        ProductOrder productOrder = new ProductOrder();
 
-        return modelMapper.map(productOrderDto, ProductOrder.class);
+        Product product = productService.findById(productOrderDto.getProduct());
+        Client client = clientService.findClientByToken(productOrderDto.getClient());
+
+        //BRUH
+        if (client == null || product == null) return null;
+
+        Client seller = product.getSeller();
+
+        ClientAddress address = clientService.getClientAddress(client.getToken());
+        if (address == null || seller == null) return null;
+
+        productOrder
+                .setAmount(productOrderDto.getAmount())
+                .setOrderStatus(OrderStatus.PENDING)
+                .setTotalPrice(product.getPrice() * productOrderDto.getAmount())
+                .setSeller(seller)
+                .setProduct(product)
+                .setAddress(address.getAddress());
+        return productOrder;
+
 
     }
 }

@@ -1,7 +1,14 @@
 package io.github.seujorgenochurras.domain.model;
 
 public enum OrderStatus {
-    ARRIVED,
-    PENDING,
-    CANCELED;
+    ARRIVED("Entregue"),
+    PENDING("A caminho"),
+    CANCELED("Cancelado");
+
+    public final String statusName;
+
+    OrderStatus(String statusName) {
+        this.statusName = statusName;
+    }
+
 }

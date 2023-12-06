@@ -7,8 +7,8 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 @Entity
 public class ProductOrder {
 
-    @NotNull
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @NotNull
@@ -18,7 +18,7 @@ public class ProductOrder {
     @NotNull
     @PrimaryKeyJoinColumn(name = "seller_fk")
     @OneToOne
-    private Seller seller;
+    private Client seller;
 
     @NotNull
     @PrimaryKeyJoinColumn(name = "product_fk")
@@ -79,11 +79,11 @@ public class ProductOrder {
         return this;
     }
 
-    public Seller getSeller() {
+    public Client getSeller() {
         return seller;
     }
 
-    public ProductOrder setSeller(Seller seller) {
+    public ProductOrder setSeller(Client seller) {
         this.seller = seller;
         return this;
     }

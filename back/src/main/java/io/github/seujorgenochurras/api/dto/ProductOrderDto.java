@@ -5,12 +5,23 @@ import io.github.seujorgenochurras.domain.model.Address;
 public class ProductOrderDto {
     private String client;
 
-    private String product;
+    //TODO just to let you know, you can get this by going into product :p (bruh)
+    private String seller;
+
+    private Integer product;
 
     private AddressDto address;
 
     private int amount;
 
+    public String getSeller() {
+        return seller;
+    }
+
+    public ProductOrderDto setSeller(String seller) {
+        this.seller = seller;
+        return this;
+    }
 
     public String getClient() {
         return client;
@@ -21,11 +32,20 @@ public class ProductOrderDto {
         return this;
     }
 
-    public String getProduct() {
+    public AddressDto getAddress() {
+        return address;
+    }
+
+    public ProductOrderDto setAddress(AddressDto address) {
+        this.address = address;
+        return this;
+    }
+
+    public Integer getProduct() {
         return product;
     }
 
-    public ProductOrderDto setProduct(String product) {
+    public ProductOrderDto setProduct(Integer product) {
         this.product = product;
         return this;
     }

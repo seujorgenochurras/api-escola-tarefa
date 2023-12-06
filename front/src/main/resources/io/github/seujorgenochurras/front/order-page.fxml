@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="738.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.product.ClientOrdersController">
+   <children>
+      <Label layoutX="486.0" layoutY="7.0" text="Pedidos">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label fx:id="closePageButton" layoutX="1060.0" layoutY="14.0" onMouseClicked="#closePageButton" prefHeight="26.0" prefWidth="14.0" text="X">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Bloom threshold="0.23" />
+         </effect>
+      </Label>
+      <JFXTreeTableView fx:id="productsView" layoutX="21.0" layoutY="67.0" prefHeight="630.0" prefWidth="1092.0">
+         <columns>
+            <TreeTableColumn fx:id="productNameColumn" prefWidth="124.0" text="Produto" />
+            <TreeTableColumn fx:id="sellerNameColumn" prefWidth="124.0" text="Vendedor" />
+            <TreeTableColumn fx:id="clientNameColumn" prefWidth="120.0" text="Destinatário" />
+            <TreeTableColumn fx:id="addressColumn" prefWidth="284.0" text="Endereço" />
+            <TreeTableColumn fx:id="orderStatus" prefWidth="104.0" text="Status" />
+            <TreeTableColumn fx:id="productPriceColumn" prefWidth="123.0" text="Preço Unidade" />
+            <TreeTableColumn fx:id="productCountColumn" prefWidth="97.0" text="Quantidade" />
+            <TreeTableColumn fx:id="finalPriceColumn" prefWidth="115.0" text="Preço final" />
+         </columns>
+      </JFXTreeTableView>
+   </children>
+</Pane>

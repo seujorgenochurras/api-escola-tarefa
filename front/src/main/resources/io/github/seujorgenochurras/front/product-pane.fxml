@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="429.0" style="-fx-border-style: solid;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.ProductPaneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="429.0" style="-fx-border-style: solid;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.seujorgenochurras.front.controller.product.ProductPaneController">
    <children>
       <Label fx:id="productNameLabel" layoutX="20.0" layoutY="35.0" prefHeight="36.0" prefWidth="192.0" text="Product name">
          <font>
@@ -25,7 +25,7 @@
          </children>
       </AnchorPane>
       <Spinner fx:id="quantitySpinner" editable="true" layoutX="51.0" layoutY="306.0" />
-      <Button fx:id="buyButton" layoutX="261.0" layoutY="300.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="123.0" style="-fx-background-color: #387ff8;" text="Comprar" textFill="WHITE">
+      <Button fx:id="buyButton" layoutX="261.0" layoutY="300.0" mnemonicParsing="false" onAction="#onBuyButtonClick" prefHeight="33.0" prefWidth="123.0" style="-fx-background-color: #387ff8;" text="Comprar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

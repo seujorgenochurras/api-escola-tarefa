@@ -4,14 +4,12 @@ import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
 import io.github.seujorgenochurras.front.Main;
-import io.github.seujorgenochurras.front.config.Scenes;
-import io.github.seujorgenochurras.front.domain.User;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 
 public class PopupUtil {
 
-    public static void showErrorMessage(String errorMessage) {
+    public static void showErrorMessage(String errorMessage, String okButtonText) {
         JFXAlert alert = new JFXAlert(Main.getStageManager().getStage());
         alert.initModality(Modality.APPLICATION_MODAL);
         JFXDialogLayout layout = new JFXDialogLayout();
@@ -19,15 +17,17 @@ public class PopupUtil {
 
         layout.setHeading(new Label("Oh não!!"));
         layout.setBody(new Label(errorMessage));
-        JFXButton acceptButton = new JFXButton("Voltar ao login");
+        JFXButton acceptButton = new JFXButton(okButtonText);
 
-        acceptButton.setOnAction(event -> {
-            User.logout();
-            Main.getStageManager().switchScene(Scenes.LOGIN);
-        });
+        acceptButton.setOnAction(event -> alert.hideWithAnimation());
+
         layout.setActions(acceptButton);
         alert.setContent(layout);
         alert.show();
+    }
+
+    public static void showErrorMessage(String errorMessage) {
+        showErrorMessage(errorMessage, "Voltar ao login");
     }
 
     public static void showAlertMessage(String alertMessage) {

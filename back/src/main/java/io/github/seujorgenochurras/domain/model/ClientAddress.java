@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class ClientAddress {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne
