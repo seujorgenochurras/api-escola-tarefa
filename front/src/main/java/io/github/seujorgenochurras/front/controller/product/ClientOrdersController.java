@@ -59,34 +59,27 @@ public class ClientOrdersController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initColumns();
-        addAllProducts();
+        //addAllProducts();
     }
 
     public void initColumns() {
         productNameColumn.setCellValueFactory((param) -> param.getValue().getValue().productNameProperty());
-
         productCountColumn.setCellValueFactory((param -> param.getValue().getValue().countProperty()));
-
         productPriceColumn.setCellValueFactory((param -> param.getValue().getValue().unitaryPriceProperty()));
-
         finalPriceColumn.setCellValueFactory((param -> param.getValue().getValue().totalPriceProperty()));
-
         addressColumn.setCellValueFactory((param -> param.getValue().getValue().addressProperty()));
-
         clientNameColumn.setCellValueFactory((param -> param.getValue().getValue().clientNameProperty()));
-
         orderStatus.setCellValueFactory((param -> param.getValue().getValue().orderStatusProperty()));
-
         sellerNameColumn.setCellValueFactory((param -> param.getValue().getValue().sellerNameProperty()));
 
     }
 
-    public void addAllProducts() {
-        ObservableList<ClientOrder> orders = userService.getUserOrders();
-        TreeItem<Product> productTreeItems = new RecursiveTreeItem<>(products, RecursiveTreeObject::getChildren);
-        productsView.setRoot(productTreeItems);
-        productsView.setShowRoot(false);
-    }
+//    public void addAllProducts() {
+//        ObservableList<ClientOrder> orders = userService.getUserOrders();
+//        TreeItem<Product> productTreeItems = new RecursiveTreeItem<>(products, RecursiveTreeObject::getChildren);
+//        productsView.setRoot(productTreeItems);
+//        productsView.setShowRoot(false);
+//    }
 
     @FXML
     private void closePageButton() {

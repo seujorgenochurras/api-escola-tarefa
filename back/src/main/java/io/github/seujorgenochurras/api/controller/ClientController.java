@@ -43,6 +43,17 @@ public class ClientController {
     @Autowired
     private ProductOrderService productOrderService;
 
+
+    @PostMapping(path = "/client/address")
+    public ResponseEntity<Object> getClientAddress(@RequestBody String clientToken){
+        ClientAddress persistedClient = clientService.getClientAddress(clientToken);
+        if(persistedClient == null){
+            return new ResponseEntity<>("Cliente não possui um endereço cadastrado", HttpStatus.NOT_FOUND);
+
+        }
+        return new ResponseEntity<>(persistedClient, HttpStatus.OK);
+    }
+
     @PostMapping(path = "/register/client/address")
     public ResponseEntity<Object> registerAddress(@RequestBody @Validated ClientAddressRegisterDto clientAddressRegisterDto) {
         ClientAddress persistedAddress = clientService.registerAddress(clientAddressRegisterDto);
@@ -130,6 +141,5 @@ public class ClientController {
         }
         return new ResponseEntity<>(clientToken, HttpStatus.OK);
     }
-
 
 }
